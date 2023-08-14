@@ -37,4 +37,16 @@ function getChainForPokemon(pokemonName) {
     .then(toJsonString);
 }
 
-module.exports = fetchEvolutionChain;
+async function main() {
+  const args = process.argv.slice(2);
+
+  if (args.length === 0) {
+    console.error("Please provide a Pokémon name.");
+    return;
+  }
+
+  const pokemonName = args[0];
+  const evolutionChainResponse = await getChainForPokemon(pokemonName);
+
+  console.log(evolutionChainResponse);
+}
