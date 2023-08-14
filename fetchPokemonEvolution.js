@@ -19,3 +19,12 @@ async function fetchEvolutionChain(pokemonName) {
     return "Pokemon data not found";
   }
 }
+
+function convertToEvolutionChain(fullChainData) {
+  return {
+    name: fullChainData.species.name,
+    variations: fullChainData.evolves_to.map(convertToEvolutionChain),
+  };
+}
+
+module.exports = fetchEvolutionChain;
