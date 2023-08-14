@@ -27,4 +27,14 @@ function convertToEvolutionChain(fullChainData) {
   };
 }
 
+function toJsonString(chainData) {
+  return JSON.stringify(chainData, null, 2);
+}
+
+function getChainForPokemon(pokemonName) {
+  return fetchEvolutionChain(pokemonName)
+    .then(convertToEvolutionChain)
+    .then(toJsonString);
+}
+
 module.exports = fetchEvolutionChain;
