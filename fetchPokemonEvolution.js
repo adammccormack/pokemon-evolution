@@ -12,7 +12,7 @@ async function fetchEvolutionChain(pokemonName) {
 
     const evolutionChainResponse = await fetch(evolutionChainURL);
     const evolutionChainData = await evolutionChainResponse.json();
-    console.log("HERE", evolutionChainData.chain);
+
     return evolutionChainData.chain;
   } catch (error) {
     console.error("Error fetching evolution chain:", error.message);
