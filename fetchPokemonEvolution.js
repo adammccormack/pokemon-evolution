@@ -50,9 +50,11 @@ async function main() {
   console.log(evolutionChainResponse);
 }
 
-main().catch((error) => {
-  console.error("An error occurred:", error);
-});
+if (require.main === module) {
+  main().catch((error) => {
+    console.error("An error occurred:", error);
+  });
+}
 
 module.exports = {
   fetchEvolutionChain,
