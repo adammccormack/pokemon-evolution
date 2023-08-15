@@ -50,3 +50,9 @@ async function main() {
 
   console.log(evolutionChainResponse);
 }
+
+module.exports = {
+  fetchEvolutionChain,
+  convertToEvolutionChain,
+  getChainForPokemon,
+};
