@@ -41,3 +41,26 @@ describe("convertToEvolutionChain", () => {
     expect(result).toEqual(expectedOutput);
   });
 });
+
+describe("getChainForPokemon", () => {
+  test("calls functions and returns formatted JSON string", async () => {
+    const mockPokemonName = "caterpie";
+    const mockFormattedJson = {
+      name: "caterpie",
+      variations: [
+        {
+          name: "metapod",
+          variations: [
+            {
+              name: "butterfree",
+              variations: [],
+            },
+          ],
+        },
+      ],
+    };
+
+    const result = await getChainForPokemon(mockPokemonName);
+    expect(JSON.parse(result)).toEqual(mockFormattedJson);
+  });
+});
