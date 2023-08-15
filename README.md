@@ -8,12 +8,11 @@ App that is run from the command line which finds the full pokemon evolution cha
 
 2. Install node package manager, minimum version 9.0.0 or higher.
 
-3. Clone the repository:
+3. Clone this repository.
 
-4. Navigate to the project directory:
+4. Navigate to the project directory.
 
-5. Install dependencies:
-   npm install
+5. Install dependencies with 'npm install'.
 
 ## Usage
 
