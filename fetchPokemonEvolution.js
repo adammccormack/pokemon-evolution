@@ -1,23 +1,22 @@
 async function fetchEvolutionChain(pokemonName) {
-  try {
-    const pokemonResponse = await fetch(
-      `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
-    );
-    const pokemonData = await pokemonResponse.json();
-    const speciesURL = pokemonData.species.url;
+  const pokemonResponse = await fetch(
+    `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+  );
 
-    const speciesResponse = await fetch(speciesURL);
-    const speciesData = await speciesResponse.json();
-    const evolutionChainURL = speciesData.evolution_chain.url;
-
-    const evolutionChainResponse = await fetch(evolutionChainURL);
-    const evolutionChainData = await evolutionChainResponse.json();
-
-    return evolutionChainData.chain;
-  } catch (error) {
-    console.error("Error fetching evolution chain:", error.message);
-    return "Pokemon data not found";
+  if (pokemonResponse.ok === false) {
+    throw new Error("Pokemon data not found");
   }
+  const pokemonData = await pokemonResponse.json();
+  const speciesURL = pokemonData.species.url;
+
+  const speciesResponse = await fetch(speciesURL);
+  const speciesData = await speciesResponse.json();
+  const evolutionChainURL = speciesData.evolution_chain.url;
+
+  const evolutionChainResponse = await fetch(evolutionChainURL);
+  const evolutionChainData = await evolutionChainResponse.json();
+
+  return evolutionChainData.chain;
 }
 
 function convertToEvolutionChain(fullChainData) {
@@ -50,6 +49,10 @@ async function main() {
 
   console.log(evolutionChainResponse);
 }
+
+main().catch((error) => {
+  console.error("An error occurred:", error);
+});
 
 module.exports = {
   fetchEvolutionChain,
