@@ -19,3 +19,25 @@ describe("fetchEvolutionChain", () => {
   });
 });
 
+describe("convertToEvolutionChain", () => {
+  test("converts full chain data correctly", async () => {
+    const expectedOutput = {
+      name: "caterpie",
+      variations: [
+        {
+          name: "metapod",
+          variations: [
+            {
+              name: "butterfree",
+              variations: [],
+            },
+          ],
+        },
+      ],
+    };
+
+    const result = await convertToEvolutionChain(mockEvolutionChainData.chain);
+
+    expect(result).toEqual(expectedOutput);
+  });
+});
