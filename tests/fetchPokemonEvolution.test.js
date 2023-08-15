@@ -3,7 +3,7 @@ const {
   convertToEvolutionChain,
   getChainForPokemon,
 } = require("../fetchPokemonEvolution");
-const { mockEvolutionChainData } = require("../test/mockPokemonEvolutionData");
+const { mockEvolutionChainData } = require("./mockPokemonEvolutionData");
 
 const mockPokemonName = "caterpie";
 
