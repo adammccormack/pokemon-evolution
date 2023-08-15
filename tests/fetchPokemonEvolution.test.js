@@ -5,9 +5,10 @@ const {
 } = require("../fetchPokemonEvolution");
 const { mockEvolutionChainData } = require("../test/mockPokemonEvolutionData");
 
+const mockPokemonName = "caterpie";
+
 describe("fetchEvolutionChain", () => {
   test("fetchEvolutionChain fetches evolution chain correctly", async () => {
-    const mockPokemonName = "caterpie";
     const evolutionChain = await fetchEvolutionChain(mockPokemonName);
     expect(evolutionChain).toEqual(mockEvolutionChainData.chain);
   });
@@ -44,7 +45,6 @@ describe("convertToEvolutionChain", () => {
 
 describe("getChainForPokemon", () => {
   test("calls functions and returns formatted JSON string", async () => {
-    const mockPokemonName = "caterpie";
     const mockFormattedJson = {
       name: "caterpie",
       variations: [
